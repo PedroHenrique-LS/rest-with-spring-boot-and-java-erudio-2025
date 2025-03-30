@@ -3,14 +3,14 @@ package com.github.PedroHenrique_LS.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(HttpStatus.BAD_REQUEST)
-public class UnsupportedMathOperationException extends RuntimeException {
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class ResourceNotFoundException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 	
-	public UnsupportedMathOperationException() {
+	public ResourceNotFoundException() {
 		// TODO Auto-generated constructor stub
 	}
-	public UnsupportedMathOperationException(String text) {
+	public ResourceNotFoundException(String text) {
 		super(text);
 	}
 
