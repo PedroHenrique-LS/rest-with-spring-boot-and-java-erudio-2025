@@ -1,8 +1,9 @@
 package com.github.PedroHenrique_LS.services;
 
 import java.util.List;
-import java.util.logging.Logger;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ import com.github.PedroHenrique_LS.repository.PersonRepository;
 @Service
 public class PersonService {
 
-	private Logger logger = Logger.getLogger(PersonService.class.getName());
+	private Logger logger = LoggerFactory.getLogger(PersonService.class.getName());
 	
 	@Autowired 
 	PersonRepository repository;
