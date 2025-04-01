@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.PedroHenrique_LS.model.Person;
+import com.github.PedroHenrique_LS.dto.PersonDTO;
 import com.github.PedroHenrique_LS.services.PersonService;
 
 
@@ -29,7 +29,7 @@ public class PersonController {
 	}
 	
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE )
-	public Person findById(@PathVariable("id") Long id) {
+	public PersonDTO findById(@PathVariable("id") Long id) {
 		
 		return service.findById(id);
 		
@@ -39,7 +39,7 @@ public class PersonController {
 			produces = MediaType.APPLICATION_JSON_VALUE,
 			consumes = MediaType.APPLICATION_JSON_VALUE
 			)
-	public Person Create(@RequestBody Person person) {
+	public PersonDTO Create(@RequestBody PersonDTO person) {
 		
 		return service.create(person);
 		
@@ -49,14 +49,14 @@ public class PersonController {
 			produces = MediaType.APPLICATION_JSON_VALUE,
 			consumes = MediaType.APPLICATION_JSON_VALUE
 			)
-	public Person updatePerson(@RequestBody Person person, @PathVariable("id") String id) {
+	public PersonDTO updatePerson(@RequestBody PersonDTO person, @PathVariable("id") String id) {
 	
 		return service.update(person);
 		
 	}
 	
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE )
-	public List<Person> findAll() {
+	public List<PersonDTO> findAll() {
 		return service.findAll();
 	}
 	
