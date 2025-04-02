@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.github.PedroHenrique_LS.dto.PersonDTO;
+import com.github.PedroHenrique_LS.dto.v1.PersonDTO;
 import com.github.PedroHenrique_LS.model.Person;
 import com.github.PedroHenrique_LS.unitetests.mapper.mocks.MockPerson;
 

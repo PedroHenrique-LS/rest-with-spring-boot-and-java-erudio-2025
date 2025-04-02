@@ -1,4 +1,4 @@
-package com.github.PedroHenrique_LS.dto;
+package com.github.PedroHenrique_LS.dto.v1;
 
 import java.io.Serializable;
 import java.util.Objects;

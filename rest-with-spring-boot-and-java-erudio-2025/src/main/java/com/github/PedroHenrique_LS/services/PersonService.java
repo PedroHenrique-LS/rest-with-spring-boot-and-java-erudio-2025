@@ -7,9 +7,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.github.PedroHenrique_LS.dto.PersonDTO;
+import com.github.PedroHenrique_LS.dto.v1.PersonDTO;
+import com.github.PedroHenrique_LS.dto.v2.PersonDTOV2;
 import com.github.PedroHenrique_LS.exception.ResourceNotFoundException;
 import com.github.PedroHenrique_LS.mapper.ObjectMapper;
+import com.github.PedroHenrique_LS.mapper.custom.PersonMapper;
 import com.github.PedroHenrique_LS.model.Person;
 import com.github.PedroHenrique_LS.repository.PersonRepository;
 
@@ -20,11 +22,20 @@ public class PersonService {
 	
 	@Autowired 
 	PersonRepository repository;
+	
+	@Autowired
+	PersonMapper converter;
 
 	public PersonDTO create(PersonDTO person) {
 		logger.info("Creating one People!");
 		var entity = ObjectMapper.parseObject(person, Person.class);
 		return ObjectMapper.parseObject(repository.save(entity), PersonDTO.class) ;
+	}
+	
+	public PersonDTOV2 createV2(PersonDTOV2 person) {
+		logger.info("Creating one People V2!");
+		var entity = converter.convertDTOToEntity(person);
+		return converter.convertEntityToDTO(repository.save(entity)) ;
 	}
 	
 	public PersonDTO update(PersonDTO person) {
