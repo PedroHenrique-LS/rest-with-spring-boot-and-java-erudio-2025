@@ -8,7 +8,7 @@ spring:
     password: Pedro#082003
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     properties:
       hibernate:
     show-sql: false
@@ -16,4 +16,4 @@ spring:
 logging:
   level:
     # root: WARN
-    com.github: DEBUG
+    com.github: INFO
