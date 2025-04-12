@@ -1,17 +1,45 @@
 package com.github.PedroHenrique_LS.dto.v1;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.github.PedroHenrique_LS.serializer.GenderSerializer;
+
+//import com.fasterxml.jackson.annotation.JsonIgnore;
+//import com.fasterxml.jackson.annotation.JsonProperty;
+//import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonFilter("PersonFilter")
+//@JsonPropertyOrder({"id", "first_name", "last_name", "gender", "address"})
 public class PersonDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
-	private String firstName;
-	private String lastName;
-	private String address;
-	private String gender;
 	
+//	@JsonProperty("first_name")
+	private String firstName;
+	
+//	@JsonProperty("last_name")
+	@JsonInclude(JsonInclude.Include.NON_NULL)
+	private String lastName;
+	
+	@JsonInclude(JsonInclude.Include.NON_EMPTY)
+	private String phoneNumber;
+	
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	private Date birthDay;
+	
+	private String address;
+	
+	@JsonSerialize(using = GenderSerializer.class)
+	private String gender;
+	private String sensitiveData;
+
 	public PersonDTO() {}
 
 	public static long getSerialversionuid() {
@@ -56,6 +84,30 @@ public class PersonDTO implements Serializable {
 
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+
+	public Date getBirthDay() {
+		return birthDay;
+	}
+
+	public void setBirthDay(Date birthDay) {
+		this.birthDay = birthDay;
+	}
+	
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	
+	public String getSensitiveData() {
+		return sensitiveData;
+	}
+
+	public void setSensitiveData(String sensitiveData) {
+		this.sensitiveData = sensitiveData;
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package com.github.PedroHenrique_LS.controllers;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.http.MediaType;
@@ -32,7 +33,15 @@ public class PersonController {
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE )
 	public PersonDTO findById(@PathVariable("id") Long id) {
 		
-		return service.findById(id);
+		var person =  service.findById(id);
+		
+		person.setBirthDay(new Date());
+		//person.setPhoneNumber("+55 (87) 999301961");
+		person.setPhoneNumber("");
+		person.setLastName(null);
+		person.setSensitiveData("123456");
+		
+		return person;
 		
 	}
 	
