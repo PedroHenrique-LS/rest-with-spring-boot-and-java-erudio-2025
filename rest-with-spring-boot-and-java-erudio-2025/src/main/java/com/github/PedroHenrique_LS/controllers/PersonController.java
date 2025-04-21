@@ -40,19 +40,9 @@ public class PersonController {
 			produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE},
 			consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE}
 			)
-	public PersonDTO Create(@RequestBody PersonDTO person) {
+	public PersonDTO create(@RequestBody PersonDTO person) {
 		
 		return service.create(person);
-		
-	}
-	
-	@PostMapping(value = "/v2",
-			produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE},
-			consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE}
-			)
-	public PersonDTOV2 CreateV2(@RequestBody PersonDTOV2 person) {
-		
-		return service.createV2(person);
 		
 	}
 	
@@ -60,7 +50,7 @@ public class PersonController {
 			produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE},
 			consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE}
 			)
-	public PersonDTO updatePerson(@RequestBody PersonDTO person, @PathVariable("id") String id) {
+	public PersonDTO updatePerson(@RequestBody PersonDTO person, @PathVariable("id") Long id) {
 	
 		return service.update(person);
 		
