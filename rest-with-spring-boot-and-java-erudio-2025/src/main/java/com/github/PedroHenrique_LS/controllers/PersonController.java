@@ -30,7 +30,7 @@ public class PersonController {
 		this.service = service;
 	}
 	
-	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE )
+	@GetMapping(value = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE} )
 	public PersonDTO findById(@PathVariable("id") Long id) {
 		
 		var person =  service.findById(id);
@@ -46,8 +46,8 @@ public class PersonController {
 	}
 	
 	@PostMapping(
-			produces = MediaType.APPLICATION_JSON_VALUE,
-			consumes = MediaType.APPLICATION_JSON_VALUE
+			produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE},
+			consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE}
 			)
 	public PersonDTO Create(@RequestBody PersonDTO person) {
 		
@@ -56,8 +56,8 @@ public class PersonController {
 	}
 	
 	@PostMapping(value = "/v2",
-			produces = MediaType.APPLICATION_JSON_VALUE,
-			consumes = MediaType.APPLICATION_JSON_VALUE
+			produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE},
+			consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE}
 			)
 	public PersonDTOV2 CreateV2(@RequestBody PersonDTOV2 person) {
 		
@@ -66,8 +66,8 @@ public class PersonController {
 	}
 	
 	@PutMapping(value = "/{id}",
-			produces = MediaType.APPLICATION_JSON_VALUE,
-			consumes = MediaType.APPLICATION_JSON_VALUE
+			produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE},
+			consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE}
 			)
 	public PersonDTO updatePerson(@RequestBody PersonDTO person, @PathVariable("id") String id) {
 	
@@ -75,7 +75,7 @@ public class PersonController {
 		
 	}
 	
-	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE )
+	@GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_YAML_VALUE} )
 	public List<PersonDTO> findAll() {
 		return service.findAll();
 	}
